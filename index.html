@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Trader | Premium Fintech Trading</title>
+
+    <!-- GSAP & Lenis (Loaded early for stability) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="container nav-wrapper">
+            <div class="logo">
+                <img src="suntraderlogo.png" alt="Sun Trader Logo" style="height: 40px; width: auto;">
+            </div>
+            <ul class="nav-links">
+                <!-- Mobile Close Button -->
+                <button class="mobile-menu-close" aria-label="Close Menu">&times;</button>
+
+                <li class="nav-item">
+                    <a href="#about">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        About Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#platform">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                        Platform
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#key-features">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                        Features
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#stats">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                        Stats
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#testimonials">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Reviews
+                    </a>
+                </li>
+                <!-- Mobile Actions (Visible on Mobile) -->
+                <li class="mobile-only-actions">
+                    <a href="#start" class="btn btn-primary open-modal-btn white-btn-mobile"
+                        style="width: 100%; justify-content: center; display: flex;">Start Trading Now</a>
+                </li>
+            </ul>
+
+            <div class="nav-right flex items-center gap-4">
+                <!-- Desktop CTA (Hidden on Mobile) -->
+                <div class="desktop-cta">
+                    <a href="#start" class="btn btn-primary open-modal-btn">Get Started</a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <!-- Lazy Video (Loads via JS) -->
+        <video id="hero-video" class="hero-video" muted loop playsinline>
+            <!-- Source injected by JS -->
+        </video>
+
+        <!-- Premium Blending Cursor -->
+        <div id="hero-cursor"></div>
+
+        <div class="hero-overlay-gradient"></div> <!-- Dark overlay -->
+
+        <div class="container hero-content">
+            <p class="hero-subtitle fade-in-up">Power. Speed. Precision.</p>
+            <h1 class="hero-title fade-in-up delay-1">
+                <span class="text-gradient">Trade Without Limits</span>
+            </h1>
+            <p class="hero-description fade-in-up delay-2">
+                Institutional power. Zero latency.
+            </p>
+            <div class="hero-buttons fade-in-up delay-3">
+                <a href="#start" class="btn btn-primary open-modal-btn">Start Trading Now</a>
+                <a href="#demo" class="btn btn-secondary open-modal-btn">View Demo</a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator fade-in delay-4">
+            <span class="mouse-icon">
+                <span class="wheel"></span>
+            </span>
+            <span class="arrow-down"></span>
+        </div>
+
+        <div class="hero-visuals fade-in delay-4">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section about-section">
+        <div class="container about-grid">
+            <div class="about-content slide-up">
+                <h2 class="section-title">Built for the <br> <span class="text-gradient">Fearless</span></h2>
+                <p class="about-lead">
+                    Sun Trader isn't just a platform; it's a commitment to transparency, speed, and fairness in the
+                    financial markets.
+                </p>
+                <p class="about-text">
+                    Founded by former Wall Street quantitative analysts, we bridge the gap between institutional power
+                    and retail agility.
+                    Our engine processes over 100,000 orders per second with zero downtime.
+                </p>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">0.05ms</span>
+                        <span class="stat-label">Latency</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">$50B+</span>
+                        <span class="stat-label">Volume</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual slide-up delay-2">
+                <!-- Decorative Grid Card -->
+                <div class="glass-card value-card">
+                    <h3>Our Core Values</h3>
+                    <ul class="values-list">
+                        <li>
+                            <span class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Radical Transparency</strong>
+                                <p>No hidden fees. No shadow order routing.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Extreme Velocity</strong>
+                                <p>Execution speed that beats the blink of an eye.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </span>
+                            <div>
+                                <strong>Community First</strong>
+                                <p>24/7 Support and trader-focused features.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section id="platform" class="section platform-section">
+        <div class="container platform-grid">
+            <div class="platform-text slide-up">
+                <h2 class="section-title">Institutional Grade <br> <span class="text-gradient">Dashboard</span></h2>
+                <p>
+                    Our platform is built for speed and reliability.
+                    Customize your workspace with over 50+ technical indicators
+                    and real-time data streaming.
+                </p>
+                <ul class="feature-list">
+                    <li>Real-time market data</li>
+                    <li>Advanced charting tools</li>
+                    <li>Instant order execution</li>
+                </ul>
+            </div>
+            <div class="platform-visual slide-up delay-2">
+                <div class="dashboard-mockup">
+                    <img src="dashboard.png.jpeg" alt="Institutional Trading Dashboard" class="dashboard-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section (Restored) -->
+    <section id="key-features" class="section key-features-section">
+        <div class="container">
+            <div class="key-features-header slide-up">
+                <h2 class="section-title">Key Features That Set Us <span class="text-gradient">Apart</span></h2>
+                <p>A premier trading platform crafted with the trader and broker at its core.</p>
+            </div>
+        </div>
+
+        <div class="horizontal-scroll-wrapper">
+            <div class="horizontal-scroll-track">
+                <!-- Feature 1 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">01</span>
+                    <div class="card-img-container">
+                        <img src="card1.png" alt="One-Week Go-Live" class="feature-card-img">
+                    </div>
+                    <h3>One-Week Go-Live</h3>
+                    <p>Rapid deployment with ready-to-use cutting-edge technologies.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">02</span>
+                    <div class="card-img-container">
+                        <img src="card2.png" alt="Tailored for B2C" class="feature-card-img">
+                    </div>
+                    <h3>Tailored for B2C</h3>
+                    <p>Engineered to meet the unique needs of B2C business.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">03</span>
+                    <div class="card-img-container">
+                        <img src="card3.png" alt="Customizable Margins" class="feature-card-img">
+                    </div>
+                    <h3>Customizable Margins</h3>
+                    <p>Flexible margin settings for Intraday and Carry Forward trades.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">04</span>
+                    <div class="card-img-container">
+                        <img src="card4.png" alt="Seamless Integration" class="feature-card-img">
+                    </div>
+                    <h3>Seamless Integration</h3>
+                    <p>Fully integrated back office system for effortless management.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">05</span>
+                    <div class="card-img-container">
+                        <img src="card5.png" alt="Comprehensive Option Chain" class="feature-card-img">
+                    </div>
+                    <h3>Comprehensive Option Chain</h3>
+                    <p>Empower your strategies with real-time insights.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">06</span>
+                    <div class="card-img-container">
+                        <img src="card6.png" alt="Advanced Surveillance" class="feature-card-img">
+                    </div>
+                    <h3>Advanced Surveillance</h3>
+                    <p>Automatic monitoring to detect scalping and prevent price manipulation (Chamka trade) for max
+                        profitability.</p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">07</span>
+                    <div class="card-img-container">
+                        <img src="card7.png" alt="Global Market Access" class="feature-card-img">
+                    </div>
+                    <h3>Global Market Access</h3>
+                    <p>Trade unlimited instruments across all major world markets.</p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">08</span>
+                    <div class="card-img-container">
+                        <img src="card8.png" alt="Lightning-Fast Execution" class="feature-card-img">
+                    </div>
+                    <h3>Lightning-Fast Execution</h3>
+                    <p>Experience superfast trade execution for maximum efficiency.</p>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="feature-card-horizontal">
+                    <span class="f-num">09</span>
+                    <div class="card-img-container">
+                        <img src="card9.png" alt="Limitless Scalability" class="feature-card-img">
+                    </div>
+                    <h3>Limitless Scalability</h3>
+                    <p>Grow your trading operations without constraints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    </section>
+
+    <!-- Parallax Divider -->
+    <div class="parallax-divider">
+        <div class="parallax-content">
+            <h2>Experience The <span class="text-white">Future</span></h2>
+        </div>
+    </div>
+
+    <!-- UI/UX Section -->
+    <section id="ui-ux" class="section ui-ux-section">
+        <div class="container ui-ux-grid">
+            <div class="ui-ux-content">
+                <h2 class="section-title">User Interface & <br> <span class="text-gradient">Experience</span></h2>
+                <p class="ui-ux-desc">
+                    An intuitive, user-friendly interface designed for effortless navigation and optimized
+                    for both novice and professional traders.
+                </p>
+                <ul class="ui-ux-list">
+                    <li>
+                        <span class="ui-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </span>
+                        <div>
+                            <strong>Multi-market Watch</strong>
+                            <p>Track all your assets in real-time.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ui-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                        </span>
+                        <div>
+                            <strong>User-friendly Interface</strong>
+                            <p>Clean design for distraction-free trading.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="ui-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="feature-svg"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="20" x2="12" y2="10"></line>
+                                <line x1="18" y1="20" x2="18" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="16"></line>
+                            </svg>
+                        </span>
+                        <div>
+                            <strong>Advanced Positions</strong>
+                            <p>Manage your portfolio with precision.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ui-ux-visual">
+                <!-- 3 Phone Mockups -->
+                <div class="phone-wrapper">
+                    <div class="phone-mockup phone-1">
+                        <img src="mobile1.png" alt="Market Watch">
+                    </div>
+                    <div class="phone-mockup phone-2">
+                        <img src="mobile2.png" alt="Charts">
+                    </div>
+                    <div class="phone-mockup phone-3">
+                        <img src="mobile3.png" alt="Positions">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Section (Auto-Scrolling Strip) -->
+    <section id="features" class="section features-section">
+
+
+        <div class="horizontal-scroll-wrapper">
+            <div class="features-track">
+                <!-- 5 Premium Points (Original) -->
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Lightning Fast</h3>
+                        <p>Microsecond execution.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Bank-Grade Security</h3>
+                        <p>Industry-leading encryption.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Deep Liquidity</h3>
+                        <p>Tight spreads & deep books.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.74 5.88-5.74 5.88-5.74-5.88z"></path>
+                            <path d="M12 21.31l-5.74-5.88 5.74-5.88 5.74 5.88z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Best Simple UI</h3>
+                        <p>Intuitive and easy to use.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path
+                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                            </path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated expert team.</p>
+                    </div>
+                </div>
+
+                <!-- 5 Premium Points (Duplicate for Infinite Scroll) -->
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Lightning Fast</h3>
+                        <p>Microsecond execution.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Bank-Grade Security</h3>
+                        <p>Industry-leading encryption.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Deep Liquidity</h3>
+                        <p>Tight spreads & deep books.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.74 5.88-5.74 5.88-5.74-5.88z"></path>
+                            <path d="M12 21.31l-5.74-5.88 5.74-5.88 5.74 5.88z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Best Simple UI</h3>
+                        <p>Intuitive and easy to use.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path
+                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                            </path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated expert team.</p>
+                    </div>
+                </div>
+
+                <!-- 5 Premium Points (Duplicate for Infinite Scroll) -->
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Lightning Fast</h3>
+                        <p>Microsecond execution.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Bank-Grade Security</h3>
+                        <p>Industry-leading encryption.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Deep Liquidity</h3>
+                        <p>Tight spreads & deep books.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2.69l5.74 5.88-5.74 5.88-5.74-5.88z"></path>
+                            <path d="M12 21.31l-5.74-5.88 5.74-5.88 5.74 5.88z"></path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>Best Simple UI</h3>
+                        <p>Intuitive and easy to use.</p>
+                    </div>
+                </div>
+                <div class="feature-strip-card">
+                    <span class="strip-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                            <path
+                                d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z">
+                            </path>
+                        </svg>
+                    </span>
+                    <div class="strip-info">
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated expert team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Stats Section (Premium Revamp) -->
+    <section id="stats" class="section stats-section">
+        <div class="container stats-grid">
+            <!-- Stat 1: Years Experience -->
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3 class="stat-number">
+                        <span class="counter" data-target="7">0</span>+
+                    </h3>
+                    <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="stat-glow"></div>
+            </div>
+
+            <!-- Stat 2: Trades Executed -->
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3 class="stat-number">
+                        <span class="counter" data-target="500">0</span>M+
+                    </h3>
+                    <p class="stat-label">Trades Executed</p>
+                </div>
+                <div class="stat-glow"></div>
+            </div>
+
+            <!-- Stat 3: Countries Supported -->
+            <div class="stat-card">
+                <div class="stat-content">
+                    <h3 class="stat-number">
+                        <span class="counter" data-target="50">0</span>+
+                    </h3>
+                    <p class="stat-label">Countries Supported</p>
+                </div>
+                <div class="stat-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trade Now Button (Centered) -->
+    <div class="container" style="text-align: center; margin-bottom: 60px;">
+        <button class="btn btn-primary open-modal-btn">Trade Now</button>
+    </div>
+
+    <!-- Reviews Section (Premium Dual Marquee) -->
+    <section id="testimonials" class="section reviews-section">
+        <div class="reviews-overlay"></div>
+        <div class="container-fluid">
+            <h2 class="section-title text-center slide-up">Trusted by <br> <span class="text-gradient">Indian
+                    Traders</span></h2>
+
+            <!-- Row 1: Left to Right -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track track-left">
+                    <!-- 6 Reviews (Original) -->
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Fastest execution I've seen in India. Zero lag during market hours."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">R</div>
+                            <div>
+                                <strong>Rahul Sharma</strong>
+                                <span>Intraday Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"The UI is so clean, I can finally trade without distraction."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">P</div>
+                            <div>
+                                <strong>Priya Patel</strong>
+                                <span>Crypto Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"API integration is buttery smooth. Best for automated strategies."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Amit Verma</strong>
+                                <span>Algo Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Customer support solved my query in 2 minutes. Outstanding."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">S</div>
+                            <div>
+                                <strong>Sneha Reddy</strong>
+                                <span>Investor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Low latency and deep liquidity. Exactly what I needed."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">V</div>
+                            <div>
+                                <strong>Vikram Singh</strong>
+                                <span>Pro Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I switched from Zerodha and never looked back. 10/10."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Arjun Mehta</strong>
+                                <span>Scalper</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATES FOR INFINITE SCROLL -->
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Fastest execution I've seen in India. Zero lag during market hours."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">R</div>
+                            <div>
+                                <strong>Rahul Sharma</strong>
+                                <span>Intraday Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"The UI is so clean, I can finally trade without distraction."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">P</div>
+                            <div>
+                                <strong>Priya Patel</strong>
+                                <span>Crypto Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"API integration is buttery smooth. Best for automated strategies."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Amit Verma</strong>
+                                <span>Algo Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Customer support solved my query in 2 minutes. Outstanding."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">S</div>
+                            <div>
+                                <strong>Sneha Reddy</strong>
+                                <span>Investor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Low latency and deep liquidity. Exactly what I needed."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">V</div>
+                            <div>
+                                <strong>Vikram Singh</strong>
+                                <span>Pro Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"I switched from Zerodha and never looked back. 10/10."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Arjun Mehta</strong>
+                                <span>Scalper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Right to Left -->
+            <div class="marquee-wrapper">
+                <div class="marquee-track track-right">
+                    <!-- 6 Reviews (Original) -->
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Charts load instantly. Analysis tools are top-notch."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">N</div>
+                            <div>
+                                <strong>Neha Gupta</strong>
+                                <span>Swing Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Withdrawals are super fast. Trustworthy platform."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">R</div>
+                            <div>
+                                <strong>Rohan Das</strong>
+                                <span>Forex Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Institutional grade tools for retail traders."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">K</div>
+                            <div>
+                                <strong>Karan Malhotra</strong>
+                                <span>Hedge Fund</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Very easy to learn. The demo account helped me a lot."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Anjali Nair</strong>
+                                <span>Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Option chain analysis is a game changer here."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">S</div>
+                            <div>
+                                <strong>Siddharth Rao</strong>
+                                <span>Options Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Love the dark mode and customizable dashboard."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">D</div>
+                            <div>
+                                <strong>Divya Kapoor</strong>
+                                <span>Day Trader</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DUPLICATES FOR INFINITE SCROLL -->
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Charts load instantly. Analysis tools are top-notch."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">N</div>
+                            <div>
+                                <strong>Neha Gupta</strong>
+                                <span>Swing Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Withdrawals are super fast. Trustworthy platform."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">R</div>
+                            <div>
+                                <strong>Rohan Das</strong>
+                                <span>Forex Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Institutional grade tools for retail traders."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">K</div>
+                            <div>
+                                <strong>Karan Malhotra</strong>
+                                <span>Hedge Fund</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Very easy to learn. The demo account helped me a lot."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">A</div>
+                            <div>
+                                <strong>Anjali Nair</strong>
+                                <span>Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Option chain analysis is a game changer here."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">S</div>
+                            <div>
+                                <strong>Siddharth Rao</strong>
+                                <span>Options Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card glass-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="review-text">"Love the dark mode and customizable dashboard."</p>
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">D</div>
+                            <div>
+                                <strong>Divya Kapoor</strong>
+                                <span>Day Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <div class="faq-header text-center slide-up">
+                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+                <p class="faq-subtitle">You’ve got questions, we’ve got answers.</p>
+            </div>
+
+            <div class="faq-grid">
+                <!-- Left Column -->
+                <div class="faq-column">
+                    <div class="faq-item slide-up delay-1">
+                        <div class="faq-question">
+                            <h3>What is SunTrader?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>SunTrader is a leading stock broker in India, offering a comprehensive platform for
+                                    trading in commodities, futures, and options. We provide secure, reliable, and
+                                    user-friendly services tailored to meet the needs of both new and experienced
+                                    traders.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-1">
+                        <div class="faq-question">
+                            <h3>What are the brokerage charges?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our brokerage charges are competitive and transparent. We offer:</p>
+                                <ul>
+                                    <li><strong>Derivatives Futures and Options:</strong> ₹0 per executed order</li>
+                                    <li><strong>Commodities and Currencies:</strong> ₹0 per executed order</li>
+                                </ul>
+                                <p class="mt-2">SunTrader is offering 0 brokerage charges on assets and all exchanges.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-1">
+                        <div class="faq-question">
+                            <h3>How do I open an account?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Opening an account with SunTrader is simple and can be done online. All you need is a
+                                    Phone number and email Address, that’s it! No other documents required. The account
+                                    opening process typically takes just a few seconds.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-1">
+                        <div class="faq-question">
+                            <h3>What is the minimum Deposit?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>A Beginner trader can start trading with as low as Rs.500 as well, however a bigger
+                                    capital reduces the Risk on the account.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="faq-column">
+                    <div class="faq-item slide-up delay-2">
+                        <div class="faq-question">
+                            <h3>How do I deposit funds?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>You can deposit funds into your SunTrader account through multiple methods,
+                                    including:
+                                </p>
+                                <ul>
+                                    <li>Net Banking</li>
+                                    <li>UPI</li>
+                                    <li>NEFT/RTGS</li>
+                                    <li>IMPS</li>
+                                </ul>
+                                <p class="mt-2">Deposits are usually processed instantly or within a minutes, depending
+                                    on
+                                    the method used.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-2">
+                        <div class="faq-question">
+                            <h3>How can I withdraw funds?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Withdrawing funds is easy via our platform:</p>
+                                <ol>
+                                    <li>Log in to your SunTrader account.</li>
+                                    <li>Navigate to the “Withdrawals section”</li>
+                                    <li>Click on “New Request”</li>
+                                    <li>Enter the amount, bank details and submit.</li>
+                                </ol>
+                                <p class="mt-2">Withdrawals are typically processed Instantly or within 2 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-2">
+                        <div class="faq-question">
+                            <h3>What trading platforms are offered?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>SunTrader offers multiple trading platforms to suit your needs:</p>
+                                <ul>
+                                    <li><strong>Web Platform:</strong> Trade from any browser with our intuitive
+                                        web-based
+                                        platform.</li>
+                                    <li><strong>Mobile App:</strong> Trade on the go with our highly-rated mobile app
+                                        available on Android and iOS.</li>
+                                    <li><strong>Desktop Application:</strong> For advanced traders, we provide a desktop
+                                        trading application with comprehensive charting tools.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item slide-up delay-2">
+                        <div class="faq-question">
+                            <h3>Do you charge deposit/withdrawal fees?</h3>
+                            <div class="faq-toggle">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>No, not at all. We are committed to providing the best trading solutions for our
+                                    traders,
+                                    so we do not charge any deposit or withdrawal fees.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-more text-center slide-up delay-3">
+                    <p>More Questions?</p>
+                    <a href="#contact" class="btn btn-primary open-modal-btn"
+                        style="margin-top: 10px; background-color: #0069fe !important; border-color: #0069fe !important;">
+                        CONTACT US
+                    </a>
+                </div>
+            </div>
+    </section>
+    <!-- Contact Us / CTA Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-text anim-fade-right">
+                    <h2 class="section-title">Still have <span class="text-white">questions?</span></h2>
+                    <p>Our dedicated support team is here to help you 24/7. Level up your trading
+                        journey with us today.
+                    </p>
+                    <a href="#support" class="btn btn-primary btn-lg hover-scale">Contact Support</a>
+                </div>
+                <!-- Image Wrapper -->
+                <div class="contact-image anim-fade-left">
+                    <img src="customer.png" alt="Customer Support" class="support-img floating-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <!-- Blue Main Footer -->
+        <div class="footer-main">
+            <div class="container footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="suntraderlogo.png" alt="Sun Trader"
+                            style="height: 50px; width: auto; filter: brightness(0) invert(1);">
+                        <!-- Invert to make logo white for blue bg -->
+                    </div>
+                    <p class="footer-tagline">Precision trading for the modern investor. Join 50,000+
+                        traders maximizing
+                        their potential.</p>
+                    <div class="footer-social-icons">
+                        <a href="#" class="social-icon">XT</a>
+                        <a href="#" class="social-icon">IN</a>
+                        <a href="#" class="social-icon">DC</a>
+                        <a href="#" class="social-icon">YT</a>
+                    </div>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#stats">Live Stats</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#api">API Access</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-nav-group">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Get the latest market insights.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input">
+                        <button type="submit" class="btn btn-black">Join</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Black Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="container copyright-wrapper">
+                <p>&copy; 2024 Sun Trader. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Logic Loaded Separately -->
+    <script src="contact-modal.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
