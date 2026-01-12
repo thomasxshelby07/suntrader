@@ -125,16 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .to('.hero-buttons', { opacity: 1, y: 0, duration: 0.6, ease: 'power4.out' }, '-=0.4');
 
         // Dashboard Mockup Parallax
-        gsap.to('.dashboard-img', {
-            yPercent: -15,
-            ease: 'none',
-            scrollTrigger: {
-                trigger: '.dashboard-mockup',
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true
-            }
-        });
+        // Dashboard Mockup Parallax - REMOVED per user request
+        // gsap.to('.dashboard-img', { ... });
 
         // Staggered Reveal for Cards - FASTER
         // Staggered Reveal for Cards - FASTER & RESPONSIVE
@@ -238,32 +230,87 @@ window.addEventListener('load', () => {
     // --------------------------------------------------------
     // 7. Horizontal Scroll (Key Features) - NATIVE + WHEEL HOOK
     // --------------------------------------------------------
-    const featuresSection = document.querySelector('.key-features-section');
-    const track = document.querySelector('.horizontal-scroll-track');
+    // --------------------------------------------------------
+    // 7. Horizontal Auto-Scroll Slider (Key Features)
+    // --------------------------------------------------------
+    const sliderContainer = document.querySelector('.features-list-container');
+    const dotsContainer = document.querySelector('.slider-dots-container');
+    const cards = document.querySelectorAll('.feature-row');
 
-    if (featuresSection && track && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        console.log('Horizontal Scroll: GSAP Sticky Initialized');
+    if (sliderContainer && dotsContainer && cards.length > 0) {
+        console.log('Auto-Slider Initialized');
 
-        function getScrollAmount() {
-            let trackWidth = track.scrollWidth;
-            return -(trackWidth - window.innerWidth);
+        // 1. Generate Dots
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('slider-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToCard(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.slider-dot');
+
+        // 2. Scroll Logic
+        function scrollToCard(index) {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 30; // Match CSS gap
+            const targetScroll = index * (cardWidth + gap);
+
+            sliderContainer.scrollTo({
+                left: targetScroll,
+                behavior: 'smooth'
+            });
+
+            updateActiveDot(index);
         }
 
-        const tween = gsap.to(track, {
-            x: getScrollAmount,
-            ease: "none",
+        function updateActiveDot(index) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[index]) dots[index].classList.add('active');
+        }
+
+        // 3. Auto-Scroll Interval
+        let currentIndex = 0;
+        let autoScrollInterval;
+
+        function startAutoScroll() {
+            stopAutoScroll(); // Clear existing
+            autoScrollInterval = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= cards.length) {
+                    currentIndex = 0;
+                }
+                scrollToCard(currentIndex);
+            }, 3000); // 3 Seconds
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        // 4. Interaction Handlers
+        // Pause on hover
+        sliderContainer.addEventListener('mouseenter', stopAutoScroll);
+        sliderContainer.addEventListener('mouseleave', startAutoScroll);
+
+        // Update index on manual scroll
+        sliderContainer.addEventListener('scroll', () => {
+            // throttle or debounce could be nice, but simple calc is fine for now
+            const cardWidth = cards[0].offsetWidth + 30;
+            const scrollPos = sliderContainer.scrollLeft;
+            const calculatedIndex = Math.round(scrollPos / cardWidth);
+
+            if (calculatedIndex !== currentIndex) {
+                // Sync checks
+                updateActiveDot(calculatedIndex);
+                // Don't update currentIndex immediately to avoid conflict with interval if dragging
+                // But for dots it's good.
+            }
         });
 
-        ScrollTrigger.create({
-            trigger: featuresSection,
-            start: "top top",
-            end: () => `+=${getScrollAmount() * -1}`,
-            pin: true,
-            animation: tween,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            // markers: true
-        });
+        // Start
+        startAutoScroll();
     }
 
     // --------------------------------------------------------

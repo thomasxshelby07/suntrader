@@ -95,11 +95,12 @@ h6,
     color: var(--color-text-primary);
 }
 
+/* Global Section Titles */
 .section-title {
     font-size: 4rem;
     font-weight: 900;
-    /* Extra Bold */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    /* Reduced from 20px */
     position: relative;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -660,6 +661,15 @@ button {
     /* Show body gradient */
     position: relative;
     z-index: 1;
+    margin-bottom: 50px;
+    /* REDUCED SEPARATION */
+    padding-bottom: 50px;
+}
+
+.platform-visual {
+    margin-top: 50px;
+    position: relative;
+    z-index: 2;
 }
 
 /* Trading Grid Overlay */
@@ -1333,31 +1343,104 @@ button {
 
 .about-stats {
     display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
+    flex-direction: row;
+    /* Horizontal Stack */
+    gap: 30px;
+    margin-top: 50px;
+    border-top: none;
+    padding-top: 0;
+    width: 100%;
+    /* Full Width */
+    justify-content: space-between;
 }
 
 .stat-item {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    /* Equal width */
+    min-width: 80px;
+    /* Reduced min-width */
+
+    /* Transparent Blue Glass */
+    background: rgba(78, 103, 235, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    padding: 20px 15px;
+    /* Reduced padding */
+    border-radius: 4px;
+
+    /* Subtle Border */
+    border: 1px solid rgba(78, 103, 235, 0.15);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+.stat-item:hover {
+    transform: translateY(-5px);
+    /* Reduced lift */
+    background: rgba(78, 103, 235, 0.15);
+    border-color: var(--color-brand-blue);
+    box-shadow: 0 15px 35px rgba(78, 103, 235, 0.2);
+}
+
+.stat-icon-wrapper {
+    margin-bottom: 10px;
+    /* Reduced margin */
+    color: var(--color-brand-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    /* Reduced size */
+    height: 40px;
+    /* Reduced size */
+    border-radius: 50%;
+    background: rgba(78, 103, 235, 0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover .stat-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: var(--color-brand-blue);
+    color: #FFFFFF;
+}
+
+.stat-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
 }
 
 .stat-num {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    /* Reduced from 2.5rem */
     font-weight: 700;
-    color: var(--color-brand-blue);
+    color: var(--color-text-primary);
     font-family: var(--font-heading);
     line-height: 1;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
+    position: relative;
+    z-index: 3;
 }
 
 .stat-label {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    /* Reduced font size */
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    opacity: 1;
+    position: relative;
+    z-index: 3;
 }
 
 /* Glass Card for About Values - Light Mode */
@@ -1449,24 +1532,59 @@ button {
 @media (max-width: 768px) {
 
     /* About Section Mobile Fixes */
+    /* About Section Mobile Fixes - AGGRESSIVE FORCE */
     .about-stats {
-        flex-direction: row;
-        /* Keep row but allow wrap */
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: flex-start;
-        /* Align left */
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 5px !important;
+        /* Tiny gap */
+        justify-content: space-between !important;
+        overflow-x: hidden !important;
+        /* Try to fit without scroll first */
+        padding-bottom: 0 !important;
+        width: 100% !important;
     }
 
     .stat-item {
-        flex: 1 1 40%;
-        /* 2 per row */
-        min-width: 120px;
+        flex: 1 1 0px !important;
+        /* Force equal sizing ignoring content */
+        min-width: 0 !important;
+        /* Allow shrinking below content size */
+        width: auto !important;
+        padding: 10px 4px !important;
+        /* Extremely tight padding */
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .stat-num {
-        font-size: 2rem;
-        /* Smaller font */
+        font-size: 0.9rem !important;
+        /* Very small font */
+        margin-bottom: 2px !important;
+        white-space: nowrap !important;
+        /* Prevent text wrapping */
+    }
+
+    .stat-label {
+        font-size: 0.5rem !important;
+        /* Micro label */
+        letter-spacing: 0.5px !important;
+        white-space: nowrap !important;
+    }
+
+    .stat-icon-wrapper {
+        width: 24px !important;
+        height: 24px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .stat-icon-wrapper svg {
+        width: 12px !important;
+        height: 12px !important;
     }
 
     .glass-card {
@@ -1487,209 +1605,7 @@ button {
 
 /* -------------------------------------------------------------
    Horizontal Scroll Section (Unique Layout)
-------------------------------------------------------------- */
-/* -------------------------------------------------------------
-   REWRITTEN KEY FEATURES SECTION (Horizontal Scroll)
-------------------------------------------------------------- */
-.key-features-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    /* Full viewport height for pinning */
-    /* Light Background */
-    /* Light Overlay + Key Image */
-    background:
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.6)),
-        url('key.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax feel */
-    /* ALLOW SCROLLTRIGGER TO PIN - DO NOT HIDE OVERFLOW UNLESS TRACK IS INSIDE */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
-}
 
-/* Header stays top center */
-.key-features-header {
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
-    z-index: 10;
-    padding: 0 20px;
-}
-
-/* The Wrapper - Container for the track */
-.horizontal-scroll-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    /* GSAP will control the track */
-}
-
-/* Hide Scrollbar Chrome/Safari */
-.horizontal-scroll-wrapper::-webkit-scrollbar {
-    display: none;
-}
-
-.horizontal-scroll-wrapper {
-    margin-top: 60px;
-    /* Spacer from headline */
-}
-
-/* The Track - Moves Horizontally */
-.horizontal-scroll-track {
-    display: flex;
-    flex-wrap: nowrap;
-    width: max-content;
-    gap: 30px;
-    padding-left: 5vw;
-    padding-right: 5vw;
-}
-
-/* Feature Cards - CLEAN LIGHT PREMIUM */
-
-.feature-card-horizontal {
-    width: 280px;
-    /* Reduced width */
-    height: 400px;
-    /* Reduced height */
-    background: #FFFFFF;
-    border: 1px solid rgba(78, 103, 235, 0.15);
-    box-shadow: 0 10px 30px rgba(78, 103, 235, 0.08);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    padding: 20px;
-    /* Reduced padding/margin for image */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    /* Top align */
-    flex-shrink: 0;
-    border-radius: 0;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Fancy Hover Effect */
-.feature-card-horizontal:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-brand-blue);
-    background: #FFFFFF;
-    /* Stay White */
-    box-shadow: 0 20px 60px rgba(78, 103, 235, 0.2);
-}
-
-/* Accent Line on Hover */
-.feature-card-horizontal::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--color-brand-blue);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-}
-
-.feature-card-horizontal:hover::before {
-    transform: scaleX(1);
-}
-
-/* Big Number in Background */
-.f-num {
-    font-size: 8rem;
-    /* Massive */
-    font-weight: 900;
-    color: rgba(78, 103, 235, 0.05);
-    /* Subtle watermark style */
-    position: absolute;
-    top: -20px;
-    right: -10px;
-    line-height: 1;
-    z-index: 0;
-    transition: all 0.5s ease;
-}
-
-.feature-card-horizontal:hover .f-num {
-    color: rgba(0, 105, 254, 0.3);
-    /* Brighter Blue */
-    opacity: 1;
-    /* Fully visible but transparent via rgba */
-    transform: scale(1.15) rotate(-5deg);
-    /* Dynamic movement */
-}
-
-.feature-card-horizontal h3 {
-    font-size: 1.5rem;
-    /* Balanced size */
-    color: var(--color-text-primary);
-    margin-bottom: 12px;
-    font-weight: 800;
-    /* Bolder */
-    position: relative;
-    z-index: 1;
-    line-height: 1.2;
-}
-
-.feature-card-horizontal p {
-    font-size: 1rem;
-    /* Standard readable size */
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-    font-weight: 500;
-    /* Clearer weight */
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .f-num {
-        font-size: 5rem;
-        /* Bigger number on mobile */
-        opacity: 0.1;
-        /* More visible by default on mobile */
-    }
-
-    .feature-card-horizontal {
-        width: 85vw !important;
-        /* Responsive width for all mobiles */
-        max-width: 350px;
-        /* Cap it */
-        height: 500px !important;
-        /* Force tall height */
-        padding: 40px 30px;
-        justify-content: flex-end;
-        margin: 0 auto;
-        /* Center if needed */
-    }
-
-    /* Force hover state on active/focus for mobile feel if needed, 
-       but primarily just make the default state nicer */
-    .feature-card-horizontal:active .f-num {
-        color: rgba(0, 105, 254, 0.2);
-        transform: scale(1.1);
-    }
-
-    .horizontal-scroll-track {
-        gap: 20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
 
 /* --------------------------------------------------------
    FAQ SECTION - NEXT LEVEL GLASS DESIGN
@@ -1969,6 +1885,232 @@ button {
 .parallax-content .text-white {
     color: #fff;
     -webkit-text-stroke: 0;
+}
+
+/* =========================================
+       PLATFORM SECTION (DASHBOARD) - BLUE THEME
+       ========================================= */
+.platform-section {
+    padding: 80px 0 100px 0;
+    /* Added bottom padding to prevent overlap */
+    background: linear-gradient(135deg, #2D3E9E 0%, #4E67EB 100%);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    /* Default Center Align */
+}
+
+/* Background decoration */
+.platform-section::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.platform-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    /* Wide container */
+    margin: 0 auto;
+}
+
+/* Typography - Center Align Desktop */
+.platform-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.platform-section .section-title {
+    color: #FFFFFF;
+    margin-bottom: 25px;
+    font-size: 4rem;
+    /* Headline Badi */
+    line-height: 1.1;
+    font-weight: 800;
+    text-align: center;
+}
+
+.platform-section .text-gradient {
+    background: linear-gradient(90deg, #FFFFFF 0%, #E0F2FE 30%, #4ba0ff 50%, #E0F2FE 70%, #FFFFFF 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineFlow 4s linear infinite;
+}
+
+.platform-text p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Feature List - BOX DESIGN */
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+/* Feature List - BOX DESIGN */
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.feature-list li {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    color: #FFFFFF;
+    /* Base Color White */
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: default;
+    transition: transform 0.3s ease;
+}
+
+.feature-list li:hover {
+    transform: translateY(-3px);
+    color: #FFFFFF !important;
+    /* FORCE WHITE ON HOVER so it doesn't turn blue */
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: static;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    color: #4E67EB;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+/* Dashboard Image - LARGE & SHARP */
+.platform-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dashboard-mockup {
+    width: 90%;
+    /* Very wide */
+    max-width: 1100px;
+    border-radius: 0 !important;
+    /* CORNER ROUND NA HO */
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+    /* Strong shadow */
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Thin border */
+    overflow: hidden;
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: none !important;
+    border-radius: 0 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .platform-section {
+        padding: 60px 0 80px 0;
+        /* Padding bottom on mobile too */
+    }
+
+    .platform-section .section-title {
+        text-align: left !important;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .platform-text p {
+        text-align: left !important;
+        font-size: 1.1rem;
+    }
+
+    .platform-grid {
+        align-items: flex-start;
+        /* Align structure left */
+        gap: 40px;
+    }
+
+    .platform-text {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    /* Feature Boxes on Mobile */
+    .feature-list {
+        justify-content: flex-start;
+        /* Left align */
+        flex-direction: column;
+        /* Stack them */
+        width: 100%;
+        gap: 15px;
+    }
+
+    .feature-list li {
+        width: 100%;
+        /* Full width bars */
+        justify-content: flex-start;
+    }
+
+    /* Image on Mobile */
+    /* Image on Mobile */
+    .platform-visual {
+        width: 100%;
+        /* Fix cutoff: Fit to container */
+        margin-left: 0;
+        /* Reset margins */
+    }
+
+    .dashboard-mockup {
+        width: 100%;
+        max-width: 100%;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
 }
 
 /* --------------------------------------------------------
@@ -2580,95 +2722,292 @@ button {
     }
 }
 
-/* Feature Card Images */
-/* Feature Card Images */
-.card-img-container {
-    width: calc(100% + 40px);
-    /* Fill padding area */
-    margin-left: -20px;
-    margin-top: -20px;
-    height: 160px;
-    /* Reduced image height */
-    margin-bottom: 20px;
+
+
+
+
+/* =========================================
+   KEY FEATURES - 3D GLASS BLUE CARDS (REF: USER IMAGE)
+   ========================================= */
+
+.key-features-section {
+    position: relative;
+    padding: 100px 0;
     overflow: hidden;
-    background: #f8faff;
-    /* Subtle bg for image area */
+    background: #FFFFFF;
+    z-index: 5;
+}
+
+.key-features-header {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.key-features-header .section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: #0f172a;
+}
+
+.key-features-header p {
+    color: #64748b;
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* SLIDER TRACK */
+.features-list-container {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 40px 20px 80px 20px;
+    /* Padding for shadows/hover lift */
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Fade Effect on Edges to mask cut-off */
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+
+.features-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* -------------------------------------------------------------
+   THE BLUE 3D CARD
+------------------------------------------------------------- */
+.feature-row {
+    flex: 0 0 auto;
+    width: 280px;
+    /* Further reduced */
+    min-width: 280px;
+    height: 320px;
+    /* Further reduced */
+    position: relative;
+
+    /* Theme Blue Gradient */
+    background: linear-gradient(135deg, #4E67EB 0%, #291D89 100%);
+
+    border-radius: 0;
+    /* SHARP CORNERS */
+    padding: 30px;
+    /* Slightly reduced padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-shadow: 0 20px 40px rgba(78, 103, 235, 0.25);
+    /* Brand Blue Shadow */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    overflow: hidden;
+    cursor: default;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Slightly clearer border */
+    scroll-snap-align: center;
+}
+
+/* Hover Lift */
+.feature-row:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(78, 103, 235, 0.4);
+    /* Brand Blue Hover Shadow */
+    z-index: 10;
+    /* Optional: Brighten gradient slightly on hover */
+    background: linear-gradient(135deg, #5D75F0 0%, #3224A3 100%);
+}
+
+/* 3D BLOB EFFECT (Background Decoration) */
+.feature-row::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -50px;
+    right: -50px;
+    border-radius: 50%;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+}
+
+.feature-row::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(37, 99, 235, 0) 70%);
+    bottom: -50px;
+    left: -50px;
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+}
+
+.feature-row:hover::before {
+    transform: translate(-20px, 20px);
+}
+
+.feature-row:hover::after {
+    transform: translate(20px, -20px);
+}
+
+/* INNER CONTENT WRAPPER (Z-Index above blobs) */
+.f-row-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* TEXT CONTENT */
+.f-row-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.f-row-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.f-row-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* BOTTOM FOOTER (Badge + Arrow) */
+.f-row-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    /* Push to bottom */
+}
+
+/* PILL BADGE */
+.f-pill-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 0;
+    /* SHARP */
+    font-size: 0.85rem;
+    color: #FFFFFF;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+/* CIRCLE ARROW BUTTON */
+.f-circle-btn {
+    width: 45px;
+    height: 45px;
+    background: #FFFFFF;
+    border-radius: 0;
+    /* SHARP */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid rgba(78, 103, 235, 0.1);
+    color: #2563eb;
+    /* Blue Icon */
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.feature-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Fix cutting */
-    padding: 10px;
-    /* Air around image */
-    transition: transform 0.5s ease;
+.feature-row:hover .f-circle-btn {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.feature-card-horizontal:hover .feature-card-img {
-    transform: scale(1.05);
-    /* Slight zoom on hover */
+.f-circle-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
 }
 
-/* Mobile Optimization for Key Features */
-@media (max-width: 768px) {
+/* RESPONSIVE */
+.slider-dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #cbd5e1;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.slider-dot.active {
+    background-color: #2563eb;
+    width: 25px;
+    /* Long pill for active */
+    border-radius: 10px;
+}
+
+@media (max-width: 992px) {
     .key-features-section {
-        height: auto;
-        /* Allow auto height on mobile if pinning fails, but aim for 100vh */
-        min-height: 100vh;
-        padding-top: 80px;
-        /* Space for header */
-        justify-content: flex-start;
-        /* Align to top */
+        padding: 40px 0;
+        /* Reduced padding */
     }
 
     .key-features-header {
-        position: relative;
-        /* excessive absolute positioning breaks mobile */
-        top: 0;
-        left: 0;
-        transform: none;
-        margin-bottom: 20px;
-        width: 100%;
+        margin-bottom: 25px;
+        /* Reduced gap for Mobile */
     }
 
-    .feature-card-horizontal {
-        width: 300px;
-        /* Slightly wider for mobile readability */
-        height: 440px;
-        /* Taller to fit big image */
-        padding: 20px;
+    .key-features-header .section-title {
+        font-size: 2.5rem;
+        /* Match global mobile size */
     }
 
-    .card-img-container {
-        height: 220px;
-        /* Much larger image area on mobile */
-        margin-left: -20px;
-        /* Reset margins relative to new padding */
-        margin-top: -20px;
-        width: calc(100% + 40px);
+    /* Remove Blur/Fade on Mobile */
+    .features-list-container {
+        mask-image: none;
+        -webkit-mask-image: none;
     }
 
-    .feature-card-img {
-        padding: 0;
-        /* MAXIMIZE IMAGE SIZE */
-        object-fit: cover;
-        /* Fill the space aggressively on mobile */
+    .feature-row {
+        width: 85vw;
+        min-width: 85vw;
+        height: 300px;
+        /* Reduced Mobile Height */
+        padding: 25px;
+        scroll-snap-align: center;
     }
 
-    .horizontal-scroll-track {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 
-    .f-num {
-        font-size: 2rem;
+    .f-row-content h3 {
+        font-size: 1.75rem;
     }
 }
+
 
 /* =========================================
    CONTACT US SECTION (FINAL FIX)
@@ -3248,4 +3587,276 @@ button {
         right: 20px;
         color: #fff;
     }
+}
+
+/* Core Features Section */
+.core-features-section {
+    padding-top: 60px;
+    padding-bottom: 120px;
+    background: var(--color-bg-section);
+    /* Subtle difference from Hero */
+    position: relative;
+    z-index: 2;
+}
+
+.core-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 60px;
+}
+
+.core-feature-card {
+    background: rgba(255, 255, 255, 0.7);
+    /* Glassy white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    /* New Grid Layout: Icon Left, Content Right */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "icon title"
+        "icon desc";
+    gap: 8px 20px;
+    /* Vertical gap 8px, Horizontal 20px */
+    align-items: start;
+
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.core-feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 105, 254, 0.15);
+    background: #FFFFFF;
+    border-color: rgba(78, 103, 235, 0.3);
+}
+
+/* Icon Wrapper */
+.feature-icon-wrapper {
+    grid-area: icon;
+    width: 60px;
+    /* Slightly larger for better left balance */
+    height: 60px;
+    background: rgba(78, 103, 235, 0.08);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+    /* Remove bottom margin */
+    transition: all 0.3s ease;
+}
+
+.core-feature-card:hover .feature-icon-wrapper {
+    background: var(--color-brand-blue);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.feature-icon {
+    color: var(--color-brand-blue);
+    transition: all 0.3s ease;
+}
+
+.core-feature-card:hover .feature-icon {
+    color: #FFFFFF;
+}
+
+.feature-title {
+    grid-area: title;
+    font-size: 1.2rem;
+    /* Slightly reduced for better fit */
+    font-weight: 700;
+    margin-bottom: 0;
+    /* Handled by grid gap */
+    align-self: end;
+    /* Align to bottom of first row */
+    line-height: 1.2;
+    color: var(--color-text-primary);
+}
+
+.feature-desc {
+    grid-area: desc;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    align-self: start;
+    /* Align to top of second row */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    /* Global Mobile Alignments - EXCEPT Hero */
+    .section-title,
+    h2,
+    h3 {
+        text-align: left !important;
+        font-size: 2.5rem;
+        /* Reduce form 4rem or default */
+        line-height: 1.1;
+    }
+
+    .section-title br {
+        display: none;
+        /* Hide breaks on mobile to save space */
+    }
+
+    /* Ensure Hero stays centered */
+    .hero-title,
+    .hero-subtitle,
+    .hero-description {
+        text-align: center !important;
+    }
+
+    /* Core Features - Vertical Stack (No Slider) */
+    .core-features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        /* Stack vertically */
+        gap: 15px;
+        /* Tighter gap */
+        overflow-x: visible;
+        /* Remove scroll */
+        scroll-snap-type: none;
+        padding-bottom: 0;
+        margin-top: 40px;
+    }
+
+    /* Remove Scrollbar styling */
+    .core-features-grid::-webkit-scrollbar {
+        height: 0;
+        width: 0;
+        display: none;
+    }
+
+    .core-feature-card {
+        min-width: 0;
+        /* Reset */
+        scroll-snap-align: none;
+        padding: 15px;
+        /* Compact padding */
+        border-radius: 8px;
+        /* Slightly smaller radius */
+
+        /* Maintain Grid Layout (Icon Left) but compact */
+        gap: 0 15px;
+    }
+
+    .feature-icon-wrapper {
+        width: 48px;
+        /* Smaller icon on mobile */
+        height: 48px;
+    }
+
+    .feature-title {
+        font-size: 1.1rem;
+    }
+
+    .feature-desc {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 0 10px;
+        /* Reduced from 20px as requested */
+    }
+
+    /* Adjust centralized elements if needed */
+    .text-center {
+        text-align: left !important;
+    }
+
+    /* About Section Mobile Optimizations */
+    .about-section {
+        padding: 40px 0;
+        /* Simpler padding */
+    }
+
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-stats {
+        margin-top: 25px;
+        flex-direction: column;
+        /* Stack vertically for impact */
+        gap: 15px;
+    }
+
+    .stat-item {
+        width: 100%;
+        min-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .value-card {
+        padding: 20px;
+    }
+
+    .values-list li {
+        margin-bottom: 20px;
+    }
+
+    /* Animation Speedup on Mobile */
+    .slide-up,
+    .fade-in,
+    .fade-in-up {
+        animation-duration: 0.5s !important;
+        /* Fast animations */
+        animation-delay: 0s !important;
+        /* Instant start */
+    }
+
+    /* Dashboard Mobile Refinement */
+    .dashboard-mockup {
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        /* Nice shadow */
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        margin-top: 20px;
+    }
+
+    .dashboard-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transform: none !important;
+        /* Force remove any lingering JS transform */
+    }
+}
+
+/* Global Premium Dashboard Styling (Desktop + Mobile) */
+.dashboard-mockup {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 60, 150, 0.15);
+    /* Deep premium shadow */
+    background: #fff;
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s ease;
+}
+
+.dashboard-mockup:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 35px 90px rgba(0, 60, 150, 0.2);
+}
+
+.dashboard-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    /* Inner radius matching border */
 }
