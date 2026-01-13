@@ -93,18 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    btn.innerText = 'Request Sent!';
-                    btn.style.backgroundColor = '#00c853'; // Success Green
-                    statusMsg.innerText = "Thanks! We'll contact you shortly.";
-                    statusMsg.style.color = "green";
-                    form.reset();
-                    setTimeout(() => {
-                        closeModal();
-                        btn.innerText = originalText;
-                        btn.style.backgroundColor = '';
-                        btn.disabled = false;
-                        statusMsg.innerText = "";
-                    }, 2000);
+                    // Success Logic - Replace Form with Success View
+                    const modalBody = document.querySelector('.modal-content');
+                    modalBody.innerHTML = `
+                        <div class="success-view" style="text-align: center; padding: 40px 20px;">
+                            <div class="checkmark-wrapper">
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                            </div>
+                            <h3 style="color: #122151; margin-top: 20px; font-size: 1.5rem;">Request Sent Successfully!</h3>
+                            <p style="color: #666; margin-top: 10px; font-size: 1rem;">Our team will connect with you within 1 hour.</p>
+                            <button class="btn btn-primary" onclick="document.querySelector('.modal-overlay').classList.remove('active'); document.body.style.overflow = '';" style="margin-top: 30px;">Close</button>
+                        </div>
+                    `;
+
+                    // Optional: Reset form logic if needed for next time (requires page reload or re-init, but for this UX replacing content is fine)
                 } else {
                     const errorData = await response.json();
                     statusMsg.innerText = errorData.errors ? errorData.errors.map(err => err.message).join(", ") : "Oops! Something went wrong.";

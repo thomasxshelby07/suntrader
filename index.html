@@ -19,88 +19,71 @@
 
 <body>
 
-    <!-- Header -->
-    <header class="site-header">
-        <nav class="container nav-wrapper">
-            <div class="logo">
-                <img src="suntraderlogo.png" alt="Sun Trader Logo" style="height: 40px; width: auto;">
+    <!-- Smart Floating Header -->
+    <header id="smart-navbar" class="smart-navbar">
+        <div class="container nav-container">
+            <!-- Left: Logo -->
+            <div class="nav-left">
+                <a href="#" class="logo-link">
+                    <img src="suntraderlogo.png" alt="Sun Trader" class="nav-logo">
+                </a>
             </div>
-            <ul class="nav-links">
-                <!-- Mobile Close Button -->
-                <button class="mobile-menu-close" aria-label="Close Menu">&times;</button>
 
-                <li class="nav-item">
-                    <a href="#about">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>
-                        About Us
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#platform">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                            <line x1="8" y1="21" x2="16" y2="21"></line>
-                            <line x1="12" y1="17" x2="12" y2="21"></line>
-                        </svg>
-                        Platform
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#key-features">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                            </polygon>
-                        </svg>
-                        Features
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#stats">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="18" y1="20" x2="18" y2="10"></line>
-                            <line x1="12" y1="20" x2="12" y2="4"></line>
-                            <line x1="6" y1="20" x2="6" y2="14"></line>
-                        </svg>
-                        Stats
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#testimonials">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        Reviews
-                    </a>
-                </li>
-                <!-- Mobile Actions (Visible on Mobile) -->
-                <li class="mobile-only-actions">
-                    <a href="#start" class="btn btn-primary open-modal-btn white-btn-mobile"
-                        style="width: 100%; justify-content: center; display: flex;">Explore Our Platform</a>
-                </li>
-            </ul>
+            <!-- Center: Pill Navigation -->
+            <nav class="nav-center">
+                <ul class="nav-pill-list">
+                    <li><a href="#about" class="nav-pill-link">About</a></li>
+                    <li><a href="#platform" class="nav-pill-link">Platform</a></li>
+                    <li><a href="#key-features" class="nav-pill-link">Features</a></li>
+                    <li><a href="#testimonials" class="nav-pill-link">Reviews</a></li>
+                    <li><a href="#faq" class="nav-pill-link">FAQ</a></li>
+                    <li><a href="#start" class="nav-pill-link open-modal-btn">Contact</a></li>
+                </ul>
+            </nav>
 
-            <div class="nav-right flex items-center gap-4">
-                <!-- Desktop CTA (Hidden on Mobile) -->
-                <div class="desktop-cta">
-                    <a href="#start" class="btn btn-primary open-modal-btn">Get Started</a>
-                </div>
+            <!-- Right: CTA Button -->
+            <div class="nav-right">
+                <a href="#start" class="btn btn-primary open-modal-btn nav-cta desktop-only">Explore Software</a>
 
-                <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-toggle" aria-label="Open Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </button>
             </div>
-        </nav>
+        </div>
+
+        <!-- Full Screen Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu-header">
+                <a href="#" class="mobile-logo-link">
+                    <img src="suntraderlogo.png" alt="Sun Trader" class="mobile-nav-logo">
+                </a>
+                <button class="mobile-menu-close" aria-label="Close Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="mobile-menu-links">
+                <a href="#about" class="mobile-link">About <span class="arrow">↗</span></a>
+                <a href="#platform" class="mobile-link">Platform <span class="arrow">↗</span></a>
+                <a href="#key-features" class="mobile-link">Features <span class="arrow">↗</span></a>
+                <a href="#testimonials" class="mobile-link">Reviews <span class="arrow">↗</span></a>
+                <a href="#faq" class="mobile-link">FAQ <span class="arrow">↗</span></a>
+            </nav>
+
+            <div class="mobile-menu-footer">
+                <a href="#start" class="btn btn-primary open-modal-btn mobile-cta-btn">Explore Software</a>
+                <span class="mobile-footer-text">Best Trading Software</span>
+            </div>
+        </div>
     </header>
+
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
@@ -146,7 +129,7 @@
     <!-- Core Features Section -->
     <section id="core-features" class="section core-features-section">
         <div class="container">
-            <h2 class="section-title text-center slide-up">Core Features of <br> <span class="text-gradient">Our
+            <h2 class="section-title text-center slide-up"><span class="text-gradient">Core Features of <br> Our
                     Platform</span></h2>
 
             <div class="core-features-grid slide-up delay-1">
@@ -299,7 +282,7 @@
     <section id="about" class="section about-section">
         <div class="container about-grid">
             <div class="about-content slide-up">
-                <h2 class="section-title">About <span class="text-gradient">Suntrader</span></h2>
+                <h2 class="section-title"><span class="text-gradient">About Suntrader</span></h2>
                 <p class="about-lead">
                     Sun Trader isn't just a platform; it's a commitment to transparency, speed, and fairness in the
                     financial markets.
@@ -404,7 +387,7 @@
     <section id="platform" class="section platform-section">
         <div class="container platform-grid">
             <div class="platform-text slide-up">
-                <h2 class="section-title">Institutional Grade <br> <span class="text-gradient">Dashboard</span></h2>
+                <h2 class="section-title"><span class="text-gradient">Institutional Grade <br> Dashboard</span></h2>
                 <p>
                     Our platform is built for speed and reliability.
                     Customize your workspace with over 50+ technical indicators
@@ -428,7 +411,7 @@
     <section id="key-features" class="section key-features-section">
         <div class="container">
             <div class="key-features-header slide-up">
-                <h2 class="section-title">The SunTrader <span class="text-gradient">Advantages</span></h2>
+                <h2 class="section-title"><span class="text-gradient">The SunTrader Advantages</span></h2>
                 <p>A premier trading platform crafted with the trader and broker at its core.</p>
             </div>
 
@@ -602,18 +585,12 @@
 
 
 
-    <!-- Parallax Divider -->
-    <div class="parallax-divider">
-        <div class="parallax-content">
-            <h2>Experience The <span class="text-white">Future</span></h2>
-        </div>
-    </div>
 
     <!-- UI/UX Section -->
     <section id="ui-ux" class="section ui-ux-section">
         <div class="container ui-ux-grid">
             <div class="ui-ux-content">
-                <h2 class="section-title">User Interface & <br> <span class="text-gradient">Experience</span></h2>
+                <h2 class="section-title"><span class="text-gradient">UI & Experience</span></h2>
                 <p class="ui-ux-desc">
                     An intuitive, user-friendly interface designed for effortless navigation and optimized
                     for both novice and professional traders.
@@ -673,15 +650,19 @@
                 <!-- 3 Phone Mockups -->
                 <div class="phone-wrapper">
                     <div class="phone-mockup phone-1">
-                        <img src="mobile1.png" alt="Market Watch">
+                        <img src="mockup_mobile1.png" alt="Market Watch">
                     </div>
                     <div class="phone-mockup phone-2">
-                        <img src="mobile2.png" alt="Charts">
+                        <img src="mockup_mobile2.png" alt="Charts">
                     </div>
                     <div class="phone-mockup phone-3">
-                        <img src="mobile3.png" alt="Positions">
+                        <img src="mockup_mobile3.png" alt="Positions">
                     </div>
                 </div>
+            </div>
+            <!-- Desktop UI Image -->
+            <div class="desktop-ui-wrapper">
+                <img src="desktopui.png" alt="Desktop Trading Interface" class="desktop-ui-img">
             </div>
         </div>
     </section>
@@ -937,10 +918,25 @@
         </div>
     </section>
 
-    <!-- Explore Our Platform Button (Centered) -->
-    <div class="container" style="text-align: center; margin-bottom: 60px;">
-        <button class="btn btn-primary open-modal-btn">Explore Our Platform</button>
-    </div>
+    <!-- CTA Download/Software Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Upgrade <br> Your Trading?</h2>
+                    <p class="cta-text">
+                        Experience seamless investing and trading at your fingertips. Stay updated, explore expert
+                        recommendations, and manage your portfolio anytime, anywhere.
+                    </p>
+                    <button class="btn btn-primary cta-btn open-modal-btn">Contact us for Software</button>
+                </div>
+                <div class="cta-visual">
+                    <img src="mockup_mobile1.png" alt="Trading App Mockup 1" class="cta-mockup mockup-1">
+                    <img src="mockup_mobile2.png" alt="Trading App Mockup 2" class="cta-mockup mockup-2">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Reviews Section (Premium Dual Marquee) -->
     <section id="testimonials" class="section reviews-section">
@@ -1233,209 +1229,334 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+
+
+    <!-- FAQ Section (New Design) -->
     <section id="faq" class="section faq-section">
         <div class="container">
             <div class="faq-header text-center slide-up">
-                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
-                <p class="faq-subtitle">You’ve got questions, we’ve got answers.</p>
+                <span class="faq-label">TRUSTED BY</span>
+                <h2 class="section-title">Frequently <br> Asked <span class="text-gradient">Questions</span></h2>
             </div>
 
-            <div class="faq-grid">
-                <!-- Left Column -->
-                <div class="faq-column">
-                    <div class="faq-item slide-up delay-1">
-                        <div class="faq-question">
-                            <h3>What is SunTrader?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>SunTrader is a leading stock broker in India, offering a comprehensive platform for
-                                    trading in commodities, futures, and options. We provide secure, reliable, and
-                                    user-friendly services tailored to meet the needs of both new and experienced
-                                    traders.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="faq-accordion slide-up delay-1">
 
-                    <div class="faq-item slide-up delay-1">
-                        <div class="faq-question">
-                            <h3>What are the brokerage charges?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">What does your trading platform offer?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Our brokerage charges are competitive and transparent. We offer:</p>
-                                <ul>
-                                    <li><strong>Derivatives Futures and Options:</strong> ₹0 per executed order</li>
-                                    <li><strong>Commodities and Currencies:</strong> ₹0 per executed order</li>
-                                </ul>
-                                <p class="mt-2">SunTrader is offering 0 brokerage charges on assets and all exchanges.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item slide-up delay-1">
-                        <div class="faq-question">
-                            <h3>How do I open an account?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                    <polyline points="18 15 12 9 6 15"></polyline>
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Opening an account with SunTrader is simple and can be done online. All you need is a
-                                    Phone number and email Address, that’s it! No other documents required. The account
-                                    opening process typically takes just a few seconds.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item slide-up delay-1">
-                        <div class="faq-question">
-                            <h3>What is the minimum Deposit?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>A Beginner trader can start trading with as low as Rs.500 as well, however a bigger
-                                    capital reduces the Risk on the account.</p>
-                            </div>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Our platform provides a complete trading ecosystem, including a trading interface,
+                                built-in CRM, and advanced risk management tools to help brokers and institutions
+                                operate efficiently and securely.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column -->
-                <div class="faq-column">
-                    <div class="faq-item slide-up delay-2">
-                        <div class="faq-question">
-                            <h3>How do I deposit funds?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Which asset classes does the platform support?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="6 9 12 15 18 9"></polyline>
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>You can deposit funds into your SunTrader account through multiple methods,
-                                    including:
-                                </p>
-                                <ul>
-                                    <li>Net Banking</li>
-                                    <li>UPI</li>
-                                    <li>NEFT/RTGS</li>
-                                    <li>IMPS</li>
-                                </ul>
-                                <p class="mt-2">Deposits are usually processed instantly or within a minutes, depending
-                                    on
-                                    the method used.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item slide-up delay-2">
-                        <div class="faq-question">
-                            <h3>How can I withdraw funds?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                    <polyline points="18 15 12 9 6 15"></polyline>
                                 </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>Withdrawing funds is easy via our platform:</p>
-                                <ol>
-                                    <li>Log in to your SunTrader account.</li>
-                                    <li>Navigate to the “Withdrawals section”</li>
-                                    <li>Click on “New Request”</li>
-                                    <li>Enter the amount, bank details and submit.</li>
-                                </ol>
-                                <p class="mt-2">Withdrawals are typically processed Instantly or within 2 hours.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item slide-up delay-2">
-                        <div class="faq-question">
-                            <h3>What trading platforms are offered?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>SunTrader offers multiple trading platforms to suit your needs:</p>
-                                <ul>
-                                    <li><strong>Web Platform:</strong> Trade from any browser with our intuitive
-                                        web-based
-                                        platform.</li>
-                                    <li><strong>Mobile App:</strong> Trade on the go with our highly-rated mobile app
-                                        available on Android and iOS.</li>
-                                    <li><strong>Desktop Application:</strong> For advanced traders, we provide a desktop
-                                        trading application with comprehensive charting tools.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item slide-up delay-2">
-                        <div class="faq-question">
-                            <h3>Do you charge deposit/withdrawal fees?</h3>
-                            <div class="faq-toggle">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-content">
-                                <p>No, not at all. We are committed to providing the best trading solutions for our
-                                    traders,
-                                    so we do not charge any deposit or withdrawal fees.</p>
-                            </div>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>The platform supports multiple asset classes, including:</p>
+                            <ul>
+                                <li>Forex</li>
+                                <li>Commodities</li>
+                                <li>Indices</li>
+                                <li>Cryptocurrencies</li>
+                                <li>CFDs</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="faq-more text-center slide-up delay-3">
-                    <p>More Questions?</p>
-                    <a href="#contact" class="btn btn-primary open-modal-btn"
-                        style="margin-top: 10px; background-color: #0069fe !important; border-color: #0069fe !important;">
-                        CONTACT US
-                    </a>
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">What CRM features are included?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Our integrated CRM helps manage the entire client lifecycle, including:</p>
+                            <ul>
+                                <li>Client onboarding</li>
+                                <li>Account management</li>
+                                <li>Deposit & withdrawal monitoring</li>
+                                <li>Lead and user activity tracking</li>
+                                <li>Sales and support management</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">How does the risk management system work?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>The risk management module enables real-time monitoring and control through:</p>
+                            <ul>
+                                <li>Exposure management</li>
+                                <li>Margin and leverage control</li>
+                                <li>Stop-out and liquidation rules</li>
+                                <li>Risk alerts and limits</li>
+                                <li>Trade monitoring and reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Is the platform suitable for brokers?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Yes. The platform is designed specifically for brokers, offering:</p>
+                            <ul>
+                                <li>Multi-account management</li>
+                                <li>Admin and dealer controls</li>
+                                <li>Custom trading conditions</li>
+                                <li>User and role-based access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Is the platform customizable?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Yes. The platform is highly customizable, including:</p>
+                            <ul>
+                                <li>Branding (logo, colors, UI)</li>
+                                <li>Trading rules and leverage</li>
+                                <li>CRM workflows</li>
+                                <li>Risk parameters</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Does the platform support API integration?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Yes. We provide secure APIs for:</p>
+                            <ul>
+                                <li>Liquidity providers</li>
+                                <li>Payment gateways</li>
+                                <li>KYC providers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">How secure is the platform?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Security is a top priority. The platform includes:</p>
+                            <ul>
+                                <li>Data encryption</li>
+                                <li>Secure authentication</li>
+                                <li>Role-based access control</li>
+                                <li>Continuous system monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 9 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Is the platform cloud-based?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Yes. The platform is cloud-based, ensuring:</p>
+                            <ul>
+                                <li>High availability</li>
+                                <li>Scalability</li>
+                                <li>Secure remote access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 10 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span class="faq-question-text">Do you provide technical support?</span>
+                        <span class="faq-icon">
+                            <span class="plus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                            <span class="minus-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="18 15 12 9 6 15"></polyline>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                    <div class="faq-content" hidden>
+                        <div class="faq-body">
+                            <p>Yes. We offer technical support and onboarding assistance to ensure smooth setup and
+                                operation.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
     </section>
-    <!-- Contact Us / CTA Section -->
+
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="contact-wrapper">

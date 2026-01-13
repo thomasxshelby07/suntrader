@@ -31,60 +31,104 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------
-    // 2. Header Scroll Effect (Smart Hide/Show)
+    // 2. Smart Navbar (Hide/Show on Scroll)
     // --------------------------------------------------------
-    const header = document.querySelector('header');
+    const smartNavbar = document.getElementById('smart-navbar');
     let lastScrollY = window.scrollY;
 
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
+    if (smartNavbar) {
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
 
-        // Add frosted glass effect when scrolled
-        if (currentScrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        // Smart Hide/Show Logic
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-            header.classList.add('nav-hidden'); // Scrolling DOWN -> Hide
-        } else {
-            header.classList.remove('nav-hidden'); // Scrolling UP -> Show
-        }
-        lastScrollY = currentScrollY;
-    });
-
-    // --------------------------------------------------------
-    // 3. Mobile Menu Toggle
-    // --------------------------------------------------------
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const menuCloseBtn = document.querySelector('.mobile-menu-close');
-
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                closeMenu();
+            // Threshold of 50px to start interacting
+            if (currentScrollY > 50) {
+                if (currentScrollY > lastScrollY) {
+                    // Scrolling DOWN -> Hide
+                    smartNavbar.classList.add('nav-hidden');
+                } else {
+                    // Scrolling UP -> Show
+                    smartNavbar.classList.remove('nav-hidden');
+                }
             } else {
-                navLinks.classList.add('active');
-                menuToggle.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Lock Scroll
+                // At top -> Always Show
+                smartNavbar.classList.remove('nav-hidden');
             }
-        });
 
-        const closeMenu = () => {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.style.overflow = ''; // Unlock Scroll
-        };
-
-        if (menuCloseBtn) menuCloseBtn.addEventListener('click', closeMenu);
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
+            lastScrollY = currentScrollY;
         });
     }
+
+    // --------------------------------------------------------
+    // 3. Mobile Menu Toggle - ROBUST FIX
+    // --------------------------------------------------------
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    // Select the close button specifically within the overlay to avoid confusion
+    const mobileClose = document.querySelector('.mobile-menu-overlay .mobile-menu-close');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const mobileCtaBtns = document.querySelectorAll('.mobile-cta-btn'); // Handle CTA separately
+
+    function closeMobileMenu() {
+        if (mobileOverlay) mobileOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Unlock Scroll
+    }
+
+    function openMobileMenu() {
+        if (mobileOverlay) mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Lock Scroll
+    }
+
+    if (mobileToggle && mobileOverlay) {
+        // Open
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent immediate bubbling issues
+            openMobileMenu();
+        });
+
+        // Close Button
+        if (mobileClose) {
+            mobileClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeMobileMenu();
+            });
+        }
+
+        // Close on Link Click & Scroll
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Allow default if it's external, but for anchors we handle scroll
+                // actually simpler to just close and let default anchor work or custom scroll
+
+                // If it is an anchor link to id
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    closeMobileMenu();
+                    const targetSection = document.querySelector(href);
+                    if (targetSection) {
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 350); // Wait for transition
+                    }
+                } else {
+                    // Normal link
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Close on "Explore Software" CTA Click (so modal can open cleanly)
+        mobileCtaBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeMobileMenu();
+                // Modal toggle logic in contact-modal.js will handle the opening
+            });
+        });
+    }
+
+
+
+
 
     // --------------------------------------------------------
     // 4. Hero Section Blending Cursor
@@ -130,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Staggered Reveal for Cards - FASTER
         // Staggered Reveal for Cards - FASTER & RESPONSIVE
-        const revealElements = document.querySelectorAll('.slide-up, .feature-card, .glass-card, .dashboard-mockup, .stat-item, .faq-item, .faq-more');
+        const revealElements = document.querySelectorAll('.slide-up, .feature-card, .glass-card, .dashboard-mockup, .stat-item');
         revealElements.forEach(element => {
             // Check for delay classes
             let delayTime = 0;
@@ -313,27 +357,7 @@ window.addEventListener('load', () => {
         startAutoScroll();
     }
 
-    // --------------------------------------------------------
-    // 8. FAQ Accordion Logic
-    // --------------------------------------------------------
 
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const item = question.parentElement;
-
-            // Close all other items
-            document.querySelectorAll('.faq-item').forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                }
-            });
-
-            // Toggle current
-            item.classList.toggle('active');
-        });
-    });
 
     // --------------------------------------------------------
     // 9. UI/UX Phone Interaction
@@ -456,3 +480,37 @@ if (document.querySelector('.contact-section')) {
             ease: 'power3.out'
         }, 0.2); // Slight staggered start
 }
+
+// --------------------------------------------------------
+// 10. NEW FAQ ACCORDION LOGIC
+// --------------------------------------------------------
+const faqTriggers = document.querySelectorAll('.faq-trigger');
+
+faqTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const isOpen = item.classList.contains('active');
+
+        // Close all other items (Accordion behavior)
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+                const btn = otherItem.querySelector('.faq-trigger');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+                const content = otherItem.querySelector('.faq-content');
+                if (content) content.hidden = true;
+            }
+        });
+
+        // Toggle current item
+        if (isOpen) {
+            item.classList.remove('active');
+            trigger.setAttribute('aria-expanded', 'false');
+            item.querySelector('.faq-content').hidden = true;
+        } else {
+            item.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+            item.querySelector('.faq-content').hidden = false;
+        }
+    });
+});
