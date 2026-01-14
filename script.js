@@ -117,11 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Close on "Explore Software" CTA Click (so modal can open cleanly)
+        // Close on "Explore Software" CTA Click
         mobileCtaBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 closeMobileMenu();
-                // Modal toggle logic in contact-modal.js will handle the opening
             });
         });
     }
@@ -514,3 +513,142 @@ faqTriggers.forEach(trigger => {
         }
     });
 });
+
+/* =========================================
+   11. PREMIUM CONTACT MODAL LOGIC
+   ========================================= */
+const contactModal = document.getElementById('contact-modal');
+const openModalBtns = document.querySelectorAll('.open-contact-modal');
+const closeModalBtn = document.querySelector('.modal-close');
+const contactForm = document.getElementById('premium-contact-form');
+const successView = document.getElementById('modal-success');
+const phoneInput = document.querySelector("#modal-phone");
+
+// 1. Initialize Intl Tel Input
+let iti; // store instance
+if (phoneInput && window.intlTelInput) {
+    iti = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true, /* Cleaner look */
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/utils.js"
+    });
+}
+
+// 2. Open Modal Logic
+function openModal(e) {
+    if (e) e.preventDefault();
+    if (contactModal) contactModal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Lock Scroll
+}
+
+// 3. Close Modal Logic
+function closeModal() {
+    if (contactModal) contactModal.classList.remove('active');
+    document.body.style.overflow = ''; // Unlock Scroll
+
+    // Reset Form if Success was shown
+    if (successView && successView.style.display === 'flex') {
+        setTimeout(() => {
+            successView.style.display = 'none';
+            if (contactForm) {
+                contactForm.style.display = 'block';
+                contactForm.reset();
+            }
+        }, 500);
+    }
+}
+
+// Event Listeners
+if (openModalBtns) {
+    openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+}
+
+if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+}
+
+// Close on Overlay Click
+if (contactModal) {
+    contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
+            closeModal();
+        }
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+// 4. AJAX Form Submission (Formspree)
+if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Basic Validation
+        if (!contactForm.checkValidity()) {
+            return; // Let browser handle default validation UI
+        }
+
+        // Get Form Data
+        const formData = new FormData(contactForm);
+
+        // 1. Strict Phone Validation
+        if (iti) {
+            if (!iti.isValidNumber()) {
+                alert("Please enter a valid phone number for the selected country.");
+                return;
+            }
+            formData.set('phone', iti.getNumber());
+        }
+
+        // 2. Strict Email Validation
+        const email = formData.get('email');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = 'Sending...';
+        submitBtn.disabled = true;
+
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                // Success Animation
+                contactForm.style.display = 'none';
+                if (successView) successView.style.display = 'flex'; // Show Success
+
+                // Auto Close Timer (30 seconds as requested)
+                setTimeout(() => {
+                    closeModal();
+                }, 30000);
+
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Simple Alert: Oops! There was a problem submitting your form");
+                    }
+                });
+            }
+        }).catch(error => {
+            alert("Simple Alert: Oops! There was a problem submitting your form");
+        }).finally(() => {
+            submitBtn.innerText = originalBtnText;
+            submitBtn.disabled = false;
+        });
+    });
+}

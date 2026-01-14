@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.16/build/js/intlTelInput.min.js"></script>
 </head>
 
 <body>
@@ -37,13 +39,13 @@
                     <li><a href="#key-features" class="nav-pill-link">Features</a></li>
                     <li><a href="#testimonials" class="nav-pill-link">Reviews</a></li>
                     <li><a href="#faq" class="nav-pill-link">FAQ</a></li>
-                    <li><a href="#start" class="nav-pill-link open-modal-btn">Contact</a></li>
+                    <li><a href="#" class="nav-pill-link open-contact-modal">Contact Us</a></li>
                 </ul>
             </nav>
 
             <!-- Right: CTA Button -->
             <div class="nav-right">
-                <a href="#start" class="btn btn-primary open-modal-btn nav-cta desktop-only">Explore Software</a>
+                <button class="btn btn-primary nav-cta desktop-only open-contact-modal">Explore Software</button>
 
                 <!-- Mobile Menu Toggle -->
                 <button class="mobile-toggle" aria-label="Open Menu">
@@ -78,7 +80,7 @@
             </nav>
 
             <div class="mobile-menu-footer">
-                <a href="#start" class="btn btn-primary open-modal-btn mobile-cta-btn">Explore Software</a>
+                <button class="btn btn-primary mobile-cta-btn open-contact-modal">Explore Software</button>
                 <span class="mobile-footer-text">Best Trading Software</span>
             </div>
         </div>
@@ -106,8 +108,8 @@
                 Institutional power. Zero latency.
             </p>
             <div class="hero-buttons fade-in-up delay-3">
-                <a href="#start" class="btn btn-primary open-modal-btn">Explore Our Platform</a>
-                <a href="#demo" class="btn btn-secondary open-modal-btn">View Demo</a>
+                <button class="btn btn-primary open-contact-modal">Explore Our Platform</button>
+                <a href="#" class="btn btn-outline-dark open-contact-modal">View Demo</a>
             </div>
         </div>
         </div>
@@ -240,25 +242,7 @@
                     <p class="feature-desc">For informed decision-making.</p>
                 </div>
 
-                <!-- Feature 9 -->
-                <div class="core-feature-card">
-                    <div class="feature-icon-wrapper">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" class="feature-icon"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="4" y1="21" x2="4" y2="14"></line>
-                            <line x1="4" y1="10" x2="4" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12" y2="3"></line>
-                            <line x1="20" y1="21" x2="20" y2="16"></line>
-                            <line x1="20" y1="12" x2="20" y2="3"></line>
-                            <line x1="1" y1="14" x2="7" y2="14"></line>
-                            <line x1="9" y1="8" x2="15" y2="8"></line>
-                            <line x1="17" y1="16" x2="23" y2="16"></line>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Flexible Brokerage Settings</h3>
-                    <p class="feature-desc">Fully configurable by dealers.</p>
-                </div>
+
 
                 <!-- Feature 10 -->
                 <div class="core-feature-card">
@@ -928,7 +912,9 @@
                         Experience seamless investing and trading at your fingertips. Stay updated, explore expert
                         recommendations, and manage your portfolio anytime, anywhere.
                     </p>
-                    <button class="btn btn-primary cta-btn open-modal-btn">Contact us for Software</button>
+                    <button class="btn btn-primary cta-btn"
+                        onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Contact us
+                        for Software</button>
                 </div>
                 <div class="cta-visual">
                     <img src="mockup_mobile1.png" alt="Trading App Mockup 1" class="cta-mockup mockup-1">
@@ -1565,7 +1551,7 @@
                     <p>Our dedicated support team is here to help you 24/7. Level up your trading
                         journey with us today.
                     </p>
-                    <a href="#support" class="btn btn-primary btn-lg hover-scale open-modal-btn">Contact Support</a>
+                    <a href="#" class="btn btn-primary btn-lg hover-scale open-contact-modal">Contact Support</a>
                 </div>
                 <!-- Image Wrapper -->
                 <div class="contact-image anim-fade-left">
@@ -1641,7 +1627,53 @@
     </footer>
 
     <!-- Modal Logic Loaded Separately -->
-    <script src="contact-modal.js"></script>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close Modal">&times;</button>
+
+            <div class="modal-header">
+                <img src="suntraderlogo.png" alt="Sun Trader" class="modal-logo">
+                <h3>Get Your Trading Software</h3>
+                <p>Connect with our team for instant access.</p>
+            </div>
+
+            <form id="premium-contact-form" class="contact-form" action="https://formspree.io/f/meeeooql" method="POST">
+
+                <div class="form-group">
+                    <label for="modal-name">Full Name</label>
+                    <input type="text" id="modal-name" name="name" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-phone">Phone Number</label>
+                    <input type="tel" id="modal-phone" name="phone" required style="width: 100%;">
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-email">Email Address</label>
+                    <input type="email" id="modal-email" name="email" placeholder="john@company.com" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Submit Request</button>
+                <p class="modal-footer-text">🔒 100% Secure & Private. Trusted by 500+ Traders.</p>
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="modal-success" class="success-view" style="display: none; text-align: center; padding: 40px;">
+                <div class="checkmark-wrapper">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                    </svg>
+                </div>
+                <h3 style="color: #122151; margin-bottom: 10px;">Thank You!</h3>
+                <p style="color: #64748b;">Our team connect you with in 1 hr.</p>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 
